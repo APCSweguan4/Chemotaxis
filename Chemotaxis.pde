@@ -13,7 +13,7 @@ void setup()
 void draw()   
 {
   if (backgroundON) {
-    background(50);
+    background(0);
   }
   for (int i = 0; i < colony.length; i++) {
     if (colony[i].myX + colony[i].mySpeed > screenSize) {
