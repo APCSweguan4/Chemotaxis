@@ -14,7 +14,7 @@ void setup()
 void draw()   
 {
   if (backgroundON) {
-    background(0);
+    background(50);
   }
   for (int i = 0; i < colony.length; i++) {
     if (colony[i].myX + colony[i].mySpeed > screenSize) {
@@ -75,10 +75,10 @@ void keyPressed() {
       colony[i].myActivity--;
     }
   }
-  if (keyCode == LEFT && speedCap - 1 >= 4) {
+  if (keyCode == LEFT && (speedCap - 1) >= 4) {
       speedCap--;
     }
-    if (keyCode == RIGHT && speedCap + 1 <= 11) {
+  if (keyCode == RIGHT && (speedCap + 1) <= 11) {
       speedCap++;
     }
   if (key == 'r' || key == 'R') {
@@ -152,8 +152,8 @@ class Bacteria
     myY -= mySpeed;
   }
   void r() {
-    myX += mySpeed;
     newSpeed();
+    myX += mySpeed;
   }
   void br() {
     newSpeed();
