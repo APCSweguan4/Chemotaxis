@@ -2,6 +2,7 @@ int colonySize = 75;
 Bacteria[] colony = new Bacteria[colonySize];
 int screenSize = 700;
 boolean backgroundON = true;
+int speedCap = 6;
 void setup()   
 {
   size(700, 700);
@@ -13,7 +14,7 @@ void setup()
 void draw()   
 {
   if (backgroundON) {
-    background(0);
+    background(50);
   }
   for (int i = 0; i < colony.length; i++) {
     if (colony[i].myX + colony[i].mySpeed > screenSize) {
@@ -79,11 +80,11 @@ void mousePressed() {
 }
 void keyPressed() {
   for (int i = 0; i < colony.length; i++) {
-    if (keyCode == LEFT && colony[i].mySpeed - 1 >= 0) {
-      colony[i].mySpeed--;
+    if (keyCode == LEFT && speedCap - 1 >= 4) {
+      speedCap--;
     }
-    if (keyCode == RIGHT && colony[i].mySpeed + 1 <= 11) {
-      colony[i].mySpeed++;
+    if (keyCode == RIGHT && speedCap + 1 <= 11) {
+      speedCap++;
     }
     if (keyCode == UP && colony[i].myActivity + 1 < 11) {
       colony[i].myActivity++;
@@ -142,7 +143,7 @@ class Bacteria
     myActivity = 2;
   }
   void newSpeed() {
-    mySpeed = (int)(Math.random() * 6) + 1;
+    mySpeed = (int)(Math.random() * speedCap) + 1;
   }
   void newDir() {
     myDir = (int)(Math.random() * 8) + 1;
@@ -150,30 +151,38 @@ class Bacteria
   void tl() {
     myX -= mySpeed;
     myY -= mySpeed;
+    newSpeed(); //different step each time
   }
   void up() {
     myY -= mySpeed;
+    newSpeed();
   }
   void tr() {
     myX += mySpeed;
     myY -= mySpeed;
+    newSpeed();
   }
   void r() {
     myX += mySpeed;
+    newSpeed();
   }
   void br() {
     myX += mySpeed;
     myY += mySpeed;
+    newSpeed();
   }
   void dwn() {
     myY += mySpeed;
+    newSpeed();
   }
   void bl() {
     myX -= mySpeed;
     myY += mySpeed;
+    newSpeed();
   }
   void l() {
     myX -= mySpeed;
+    newSpeed();
   }
   void move() {
     if (myDir == 1) {
