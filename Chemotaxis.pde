@@ -21,52 +21,40 @@ void draw()
       colony[i].myRand = (int)(Math.random() * 3) + 1;
       if (colony[i].myRand == 1) {
         colony[i].myDir = 1;
-        colony[i].newSpeed();
       } else if (colony[i].myRand == 2) {
         colony[i].myDir = 8;
-        colony[i].newSpeed();
       } else {
         colony[i].myDir = 7;
-        colony[i].newSpeed();
       }
     }
     if (colony[i].myY + colony[i].mySpeed > screenSize) {
       colony[i].myRand = (int)(Math.random() * 3) + 1;
       if (colony[i].myRand == 1) {
         colony[i].myDir = 1;
-        colony[i].newSpeed();
       } else if (colony[i].myRand == 2) {
         colony[i].myDir = 2;
-        colony[i].newSpeed();
       } else {
         colony[i].myDir = 3;
-        colony[i].newSpeed();
       }
     }
     if (colony[i].myY - colony[i].mySpeed < 0) {
       colony[i].myRand = (int)(Math.random() * 3) + 1;
       if (colony[i].myRand == 1) {
         colony[i].myDir = 7;
-        colony[i].newSpeed();
       } else if (colony[i].myRand == 2) {
         colony[i].myDir = 6;
-        colony[i].newSpeed();
       } else {
         colony[i].myDir = 5;
-        colony[i].newSpeed();
       }
     }
     if (colony[i].myX - colony[i].mySpeed < 0) {
       colony[i].myRand = (int)(Math.random() * 3) + 1;
       if (colony[i].myRand == 1) {
         colony[i].myDir = 3;
-        colony[i].newSpeed();
       } else if (colony[i].myRand == 2) {
         colony[i].myDir = 4;
-        colony[i].newSpeed();
       } else {
         colony[i].myDir = 5;
-        colony[i].newSpeed();
       }
     }
     colony[i].move();
@@ -80,12 +68,6 @@ void mousePressed() {
 }
 void keyPressed() {
   for (int i = 0; i < colony.length; i++) {
-    if (keyCode == LEFT && speedCap - 1 >= 4) {
-      speedCap--;
-    }
-    if (keyCode == RIGHT && speedCap + 1 <= 11) {
-      speedCap++;
-    }
     if (keyCode == UP && colony[i].myActivity + 1 < 11) {
       colony[i].myActivity++;
     }
@@ -93,6 +75,12 @@ void keyPressed() {
       colony[i].myActivity--;
     }
   }
+  if (keyCode == LEFT && speedCap - 1 >= 4) {
+      speedCap--;
+    }
+    if (keyCode == RIGHT && speedCap + 1 <= 11) {
+      speedCap++;
+    }
   if (key == 'r' || key == 'R') {
     colonySize = 75;
     colony = new Bacteria[colonySize];
@@ -150,40 +138,40 @@ class Bacteria
     myDir = (int)(Math.random() * 8) + 1;
   }
   void tl() {
+    newSpeed(); //different step each time
     myX -= mySpeed;
     myY -= mySpeed;
-    newSpeed(); //different step each time
   }
   void up() {
-    myY -= mySpeed;
     newSpeed();
+    myY -= mySpeed;
   }
   void tr() {
+    newSpeed();
     myX += mySpeed;
     myY -= mySpeed;
-    newSpeed();
   }
   void r() {
     myX += mySpeed;
     newSpeed();
   }
   void br() {
+    newSpeed();
     myX += mySpeed;
     myY += mySpeed;
-    newSpeed();
   }
   void dwn() {
-    myY += mySpeed;
     newSpeed();
+    myY += mySpeed;
   }
   void bl() {
+    newSpeed();
     myX -= mySpeed;
     myY += mySpeed;
-    newSpeed();
   }
   void l() {
-    myX -= mySpeed;
     newSpeed();
+    myX -= mySpeed;
   }
   void move() {
     if (myDir == 1) {
