@@ -96,6 +96,7 @@ void keyPressed() {
   if (key == 'r' || key == 'R') {
     colonySize = 75;
     colony = new Bacteria[colonySize];
+    speedCap = 6;
     for (int i = 0; i < colony.length; i++) {
       colony[i] = new Bacteria();
       colony[i].newSpeed();
