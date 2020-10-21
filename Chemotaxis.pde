@@ -138,39 +138,39 @@ class Bacteria
     myDir = (int)(Math.random() * 8) + 1;
   }
   void tl() {
-    newSpeed(); //different step each time
+    newSpeed(); //different sized step each time, so still random walk (yet very biased)
     myX -= mySpeed;
     myY -= mySpeed;
   }
   void up() {
-    newSpeed();
+    newSpeed(); //different sized step each time, so still random walk (yet very biased)
     myY -= mySpeed;
   }
   void tr() {
-    newSpeed();
+    newSpeed(); //different sized step each time, so still random walk (yet very biased)
     myX += mySpeed;
     myY -= mySpeed;
   }
   void r() {
-    newSpeed();
+    newSpeed(); //different sized step each time, so still random walk (yet very biased)
     myX += mySpeed;
   }
   void br() {
-    newSpeed();
+    newSpeed(); //different sized step each time, so still random walk (yet very biased)
     myX += mySpeed;
     myY += mySpeed;
   }
   void dwn() {
-    newSpeed();
+    newSpeed(); //different sized step each time, so still random walk (yet very biased)
     myY += mySpeed;
   }
   void bl() {
-    newSpeed();
+    newSpeed(); //different sized step each time, so still random walk (yet very biased)
     myX -= mySpeed;
     myY += mySpeed;
   }
   void l() {
-    newSpeed();
+    newSpeed(); //different sized step each time, so still random walk (yet very biased)
     myX -= mySpeed;
   }
   void move() {
