@@ -75,7 +75,7 @@ void keyPressed() {
       colony[i].myActivity--;
     }
   }
-  if (keyCode == LEFT && (speedCap - 1) >= 4) {
+  if (keyCode == LEFT && (speedCap - 1) >= 2) {
       speedCap--;
     }
   if (keyCode == RIGHT && (speedCap + 1) <= 11) {
